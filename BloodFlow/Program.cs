@@ -13,15 +13,16 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 });
 
 builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
-builder.Services.AddIdentity<User, IdentityRole>(options =>
-    {
-        options.SignIn.RequireConfirmedAccount = true;
-    })
-    .AddDefaultTokenProviders()
-    .AddEntityFrameworkStores<ApplicationDbContext>()
-    .AddDefaultUI();
+// builder.Services.AddIdentity<User, IdentityRole>(options =>
+//     {
+//         options.SignIn.RequireConfirmedAccount = true;
+//     })
+//     .AddDefaultTokenProviders()
+//     .AddEntityFrameworkStores<ApplicationDbContext>()
+//     .AddDefaultUI();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
